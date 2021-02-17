@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const baseConfig = () => ({
   entry: './src/index.js',
+  devtool : 'inline-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
