@@ -5,7 +5,7 @@ import TripSummary from './TripSummary';
 describe('Component TripSummary', () => {
   it('should render correct link', () => {
     const expectedId = 'abc';
-    const component = shallow(<TripSummary id={expectedId} tags={['']} />);
+    const component = shallow(<TripSummary id={expectedId} name='trip' image='image.jpg' cost='123' days={3} tags={['']} />);
     const renderedLink = component.find('Link').prop('to');
     expect(renderedLink).toEqual('/trip/' + expectedId);
   });
@@ -14,7 +14,7 @@ describe('Component TripSummary', () => {
     const expectedId = 'abc';
     const name = 'trip';
     const expectedImage = 'image.jpg';
-    const component = shallow(<TripSummary id={expectedId} name={name} image={expectedImage} tags={['']} />);
+    const component = shallow(<TripSummary id={expectedId} name={name} image={expectedImage} cost='123' days={3} tags={['']} />);
     expect(component.find('img').prop('src')).toEqual(expectedImage);
     expect(component.find('img').prop('alt')).toEqual(name);
   });
@@ -32,12 +32,17 @@ describe('Component TripSummary', () => {
     console.log(component.debug());
   });
 
+  it('should render without crashing', () => {
+    const component = shallow(<TripSummary id='abc' name='trip' image='image.jpg' cost='123' days={3} tags={['first', 'second', 'third']} />);
+    expect(component).toBeTruthy();
+  });
+
   it('should throw error without required props', () => {
     expect(() => shallow(<TripSummary tags={[]} />)).toThrow();
   });
 
   it('should render tags correctly', () => {
-    const component = shallow(<TripSummary tags={['first', 'second', 'third']} />);
+    const component = shallow(<TripSummary id='abc' name='trip' image='image.jpg' cost='123' days={3} tags={['first', 'second', 'third']} />);
 
     expect(component.find('.tag').at(0).text()).toEqual('first');
     expect(component.find('.tag').at(1).text()).toEqual('second');
@@ -45,7 +50,7 @@ describe('Component TripSummary', () => {
   });
 
   it('should not render tagswhen array is not given', () => {
-    const component = shallow(<TripSummary image='image.jpg' tags={[]} />);
+    const component = shallow(<TripSummary id='abc' name='trip' image='image.jpg' cost='123' days={3} tags={['']} />);
 
     expect(component.find('.tags')).toMatchObject({});
   });
