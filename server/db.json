@@ -1,0 +1,31 @@
+{
+  "orders": [
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "",
+      "contact": "",
+      "start-date": "",
+      "totalCost": "$129,702",
+      "id": 1
+    },
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "k",
+      "contact": "5555",
+      "start-date": "",
+      "totalCost": "$129,702",
+      "tripId": "5cc1d1011736309a788fd36d",
+      "countryCode": "TKL",
+      "tripName": "Marvelous foray in brilliant Tokelau",
+      "id": 2
+    }
+  ]
+}
