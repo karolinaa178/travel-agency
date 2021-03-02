@@ -1,11 +1,18 @@
 import React from 'react';
-//import {NavLink, Link} from 'react-router-dom';
-//import styles from './HappyHourAd.scss';
+import styles from './HappyHourAd.scss';
 import PropTypes from 'prop-types';
 
 class HappyHourAd extends React.Component {
+  constructor(){
+    super();
+
+    /* run this.forceUpdate() every second */
+    setInterval(() => this.forceUpdate(), 1000);
+  }
+
   static propTypes = {
     title: PropTypes.string,
+    promoDescription: PropTypes.string,
   };
 
   getCountdownTime(){
@@ -20,12 +27,23 @@ class HappyHourAd extends React.Component {
   }
 
   render(){
-    return (
-      <div>
-        <h3 className='title'>{this.props.title}</h3>
-        <div className='promoDescription'>{this.getCountdownTime()}</div>
-      </div>
-    );
+    const countdownTime = this.getCountdownTime();
+    const {title, promoDescription} = this.props;
+    if(countdownTime > 23*60*60) {
+      return (
+        <div className={styles.component}>
+          <h3 className={styles.title}>{title}</h3>
+          <div className={styles.promoDescription}>{promoDescription}</div>
+        </div>
+      );
+    } else {
+      return (
+        <div className={styles.component}>
+          <h3 className={styles.title}>{title}</h3>
+          <div className={styles.promoDescription}>{countdownTime}</div>
+        </div>
+      );
+    }
   }
 }
 
