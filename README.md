@@ -1,1 +1,1 @@
-https://radiant-bastion-47415.herokuapp.com/regions
+https://radiant-bastion-47415.herokuapp.com/
